@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 @Table(name="CART")
 public class Cart implements Serializable {
 	
+	
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="Cart_ID")
@@ -23,9 +25,9 @@ public class Cart implements Serializable {
 	private double price;
 	@Column(name="Status")
 	private String status;
-	@Column(name="Product_Name")
+	@Column(name="Product Name")
 	private String productName;
-	@Column(name="User")
+	@Column(name="User Name")
 	private String user;
 	
 	public int getId() {

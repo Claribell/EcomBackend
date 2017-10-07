@@ -22,7 +22,7 @@ public class Product implements Serializable
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="Id")
+	@Column(name="Product_Id")
 	private int id;
 	
 	@Column(name="Product Name")
@@ -39,25 +39,16 @@ public class Product implements Serializable
 	@Column(name="Stock")
 	private int stock;
 	
-	public MultipartFile getProductImage() {
+	/*public MultipartFile getProductImage() {
 		return productImage;
 	}
 	public void setProductImage(MultipartFile productImage) {
 		this.productImage = productImage;
 	}
 	@Transient
-	private MultipartFile productImage;
+	private MultipartFile productImage;*/
 	
-	public Product(int id, String productname, String description, double price, int stock,
-			MultipartFile productImage) {
-		super();
-		this.id = id;
-		this.productname = productname;
-		this.description = description;
-		this.price = price;
-		this.stock = stock;
-		this.productImage = productImage;
-	}
+	
 	public int getId() {
 		return id;
 	}

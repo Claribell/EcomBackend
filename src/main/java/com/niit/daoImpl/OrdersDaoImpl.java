@@ -16,9 +16,9 @@ public class OrdersDaoImpl implements OrdersDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public OrdersDaoImpl(SessionFactory sessionFactory)  {
+	/*public OrdersDaoImpl(SessionFactory sessionFactory)  {
 		this.sessionFactory = sessionFactory;
-	}
+	}*/
 
 	public void save(Orders order) {
 		Session session = sessionFactory.openSession();

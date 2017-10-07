@@ -17,9 +17,9 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public UserDaoImpl(SessionFactory sessionFactory)  {
+	/*public UserDaoImpl(SessionFactory sessionFactory)  {
 		this.sessionFactory = sessionFactory;
-	}
+	}*/
 
 	public void save(User u) {
 		Session session = sessionFactory.openSession();

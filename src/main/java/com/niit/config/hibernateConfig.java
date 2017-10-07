@@ -31,7 +31,8 @@ import com.niit.model.*;
 @EnableTransactionManagement
 public class hibernateConfig {
 	
-	public static Logger logger = Logger.getLogger("hibernateConfig");
+	/*public static Logger logger = Logger.getLogger("hibernateConfig");*/
+	
 	@Autowired
 	@Bean(name="dataSource")
 	public DataSource getDataSource()
@@ -86,42 +87,42 @@ public class hibernateConfig {
 	@Bean(name="userDaoImpl")
 	public UserDaoImpl getUserDao(SessionFactory sessionFactory)
 	{
-	return new UserDaoImpl(sessionFactory);
+	return new UserDaoImpl();
 	}
 	
 	@Autowired
 	@Bean(name="cartDaoImpl")
 	public CartDaoImpl getCartDao(SessionFactory sessionFactory)
 	{
-	return new CartDaoImpl(sessionFactory);
+	return new CartDaoImpl ();
 	}
 	
 	@Autowired
 	@Bean(name="categoryDaoImpl")
 	public CategoryDaoImpl getCategoryDao(SessionFactory sessionFactory)
 	{
-	return new CategoryDaoImpl(sessionFactory);
+	return new CategoryDaoImpl();
 	}
 	
 	@Autowired
 	@Bean(name="ordersDaoImpl")
 	public OrdersDaoImpl getOrdersDao(SessionFactory sessionFactory)
 	{
-	return new OrdersDaoImpl(sessionFactory);
+	return new OrdersDaoImpl();
 	}
 	
 	@Autowired
 	@Bean(name="productDaoImpl")
 	public ProductDaoImpl getProductDao(SessionFactory sessionFactory)
 	{
-	return new ProductDaoImpl(sessionFactory);
+	return new ProductDaoImpl();
 	}
 	
 	@Autowired
 	@Bean(name="supplierDaoImpl")
 	public SupplierDaoImpl getSupplierDao(SessionFactory sessionFactory)
 	{
-	return new SupplierDaoImpl(sessionFactory);
+	return new SupplierDaoImpl();
 	}
 	
 	   

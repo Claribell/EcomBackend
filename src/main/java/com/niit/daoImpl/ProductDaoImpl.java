@@ -16,10 +16,10 @@ public class ProductDaoImpl implements ProductDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public ProductDaoImpl(SessionFactory sessionFactory)  {
+	/*public ProductDaoImpl(SessionFactory sessionFactory)  {
 		this.sessionFactory = sessionFactory;
 	}
-
+*/
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

@@ -17,9 +17,9 @@ public class SupplierDaoImpl implements SupplierDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public SupplierDaoImpl(SessionFactory sessionFactory)  {
+	/*public SupplierDaoImpl(SessionFactory sessionFactory)  {
 		this.sessionFactory = sessionFactory;
-	}
+	}*/
 
 	public void save(Supplier s) {
 		Session session = sessionFactory.openSession();

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class Supplier implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	@Column(name="SUPPLIER_ID",nullable=false)
+	@Column(name="Supplier_ID",nullable=false)
 	@Id
 	private int id;
 	public int getId() {
@@ -30,7 +30,7 @@ public class Supplier implements Serializable {
 	public void setSup_name(String sup_name) {
 		this.sup_name = sup_name;
 	}
-	@Column(name="SUPPLIER_NAME",nullable=false)
+	@Column(name="Supplier Name",nullable=false)
 	private String sup_name;
 	
 	
