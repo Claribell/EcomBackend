@@ -2,6 +2,7 @@ package com.niit.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,56 +20,60 @@ public class CartDaoImpl implements CartDao{
 	/*public CartDaoImpl(SessionFactory sessionFactory)  {
 		this.sessionFactory = sessionFactory;
 	}*/
-   /*@Transactional
-	public void save(Cart cart) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save(cart);
-		session.getTransaction().commit();
-		session.close();
-		}*/
+  
    @Transactional
-	public void update(Cart cart) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.update(cart);
-		session.getTransaction().commit();
-		session.close();
-		
-	}
-   @Transactional
-	public List<Cart> getAllCart() {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		List<Cart> cart=session.createCriteria(Cart.class).list();
-		session.getTransaction().commit();
-		return cart;
-		
-		
-	}
-
-   @Transactional
-	public void delete(int id) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		Cart cart = (Cart) session.get(Cart.class, id);
-		session.delete(cart);
-		session.getTransaction().commit();
-		session.close();
-	}
-   @Transactional
-public boolean save(Cart cart) {
+   public boolean save(Cart cart) {
+   	try
+   	{
+   		sessionFactory.getCurrentSession().save(cart);
+   		return true;
+   	}
+   	catch(Exception e)
+   	{
+   		System.out.println("Exception arised:"+e);
+   		return false;
+   	}
+   		
+   }
+public boolean update(Cart cart) {
 	try
-	{
-		sessionFactory.getCurrentSession().saveOrUpdate(cart);
-		return true;
-	}
-	catch(Exception e)
-	{
-		System.out.println("Exception arised:"+e);
-		return false;
-	}
+   	{
+   		sessionFactory.getCurrentSession().saveOrUpdate(cart);
+   		return true;
+   	}
+   	catch(Exception e)
+   	{
+   		System.out.println("Exception arised:"+e);
+   		return false;
+   	}
+}
+public boolean delete(Cart cart) {
+	try
+   	{
+   		sessionFactory.getCurrentSession().delete(cart);
+   		return true;
+   	}
+   	catch(Exception e)
+   	{
+   		System.out.println("Exception arised:"+e);
+   		return false;
+   	}
+}
+public List<Cart> getAllCart(String user) {
+	Session session=sessionFactory.openSession();
+	Query query=session.createQuery("from Cart where user=:user and status='NP' ");
+	query.setParameter("user", user);
+	List<Cart> listCartItem=query.list();
+	return listCartItem;
+}
+public Cart findById(int id) {
+	Session session=sessionFactory.openSession();
+	Cart cart=(Cart)session.get(Cart.class,id);
+	session.close();
+	return cart;
+}
+  
 	
 }
 
-}
+
