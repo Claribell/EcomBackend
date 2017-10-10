@@ -21,6 +21,7 @@ public class ProductDaoImpl implements ProductDao {
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.openSession();
 		List<Product> product=session.createCriteria(Product.class).list();
+		session.flush();
 		session.close();
 		return product;
 		}
@@ -31,44 +32,27 @@ public class ProductDaoImpl implements ProductDao {
 		session.close();
 		return product;
 	}
-	@Transactional
-	public boolean delete(Product product) {
-		try
-	   	{
-	   		sessionFactory.getCurrentSession().delete(product);
-	   		return true;
-	   	}
-	   	catch(Exception e)
-	   	{
-	   		System.out.println("Exception arised:"+e);
-	   		return false;
-	   	}
+	public void delete(int id) {
+		Session session = sessionFactory.openSession();	
+		Product product=(Product)session.get(Product.class,id);
+		session.delete(product);
+		session.close();
+		}
+	public void save(Product product) {
+		Session session = sessionFactory.openSession();	
+		session.save(product);
+		session.flush();
+		session.close();
+		
 	}
-	@Transactional
-	public boolean save(Product product) {
-		try
-	   	{
-	   		sessionFactory.getCurrentSession().save(product);
-	   		return true;
-	   	}
-	   	catch(Exception e)
-	   	{
-	   		System.out.println("Exception arised:"+e);
-	   		return false;
-	   	}
+	public void update(Product product) {
+		Session session = sessionFactory.openSession();	
+		session.update(product);
+		session.flush();
+		session.close();
+		
+		
 	}
-	@Transactional
-	public boolean update(Product product) {
-		try
-	   	{
-	   		sessionFactory.getCurrentSession().saveOrUpdate(product);
-	   		return true;
-	   	}
-	   	catch(Exception e)
-	   	{
-	   		System.out.println("Exception arised:"+e);
-	   		return false;
-	   	}
-	}
+	
 
 }

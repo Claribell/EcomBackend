@@ -12,7 +12,6 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 @SuppressWarnings("unused")
 @Entity
-//@Component
 @Table(name= "User")
 public class User implements Serializable {
 	
@@ -21,11 +20,11 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="User_ID")
 	private int id;
-	@Column(name = "User Name", nullable = false)
+	@Column(name = "User_Name", nullable = false)
 	private String name;
 	@Column(name = "Mob_No", nullable = false)
 	private long mobno;
-	@Column(name = "E-mail", nullable = false)
+	@Column(name = "Email", nullable = false)
 	private String email;
 	@Column(name = "Password", nullable = false)
 	private String Password;

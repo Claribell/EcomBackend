@@ -10,7 +10,6 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-//@Component
 @Table(name= "Orders")
 public class Orders implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,13 +18,12 @@ public class Orders implements Serializable {
 	private int orderid;
 	@Column(name="Product_Id")
 	private String productid;
-	@Column(name="Payment Status")
+	@Column(name="Payment_Status")
 	private String paymentStatus;
-	@Column(name="User Name")
+	@Column(name="User_Name")
 	private String username;
-	@Column(name="Address")
 	private String address;
-	@Column(name="Total Amount")
+	@Column(name="Total_Amount")
 	private double TotalAmount;
 	
 	

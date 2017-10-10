@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 @Entity
-//@Component
 @Table(name= "CART")
 public class Cart implements Serializable {
 	
@@ -19,15 +18,15 @@ public class Cart implements Serializable {
 	@Id
 	@Column(name="Cart_ID")
 	private int id;
-	@Column(name="Quantity")
+	
 	private int quantity;
-	@Column(name="Price")
+	
 	private double price;
-	@Column(name="Status")
+	
 	private String status;
-	@Column(name="Product Name")
+	@Column(name="Product_Name")
 	private String productName;
-	@Column(name="User Name")
+	@Column(name="User_Name")
 	private String user;
 	
 	public int getId() {

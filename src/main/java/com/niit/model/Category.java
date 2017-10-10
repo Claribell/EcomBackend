@@ -12,7 +12,6 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-//@Component
 @Table(name= "Category")
 public class Category implements Serializable {
 	
@@ -21,7 +20,7 @@ public class Category implements Serializable {
 	@Id
 	@Column(name="Category_Id")
 	private int id;
-	@Column(name="Category Name", nullable=false)
+	@Column(name="Category_Name", nullable=false)
 	private String categoryname;
 	
 	public int getId() {

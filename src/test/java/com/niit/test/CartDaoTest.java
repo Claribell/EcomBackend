@@ -16,7 +16,7 @@ public class CartDaoTest {
 		public static void initialize() {
 		AnnotationConfigApplicationContext annotationConfigAppContext=new AnnotationConfigApplicationContext();
 		
-		annotationConfigAppContext.scan("com.niit.*");
+		annotationConfigAppContext.scan("com.niit");
 		annotationConfigAppContext.refresh();
 		cartDao=(CartDao)annotationConfigAppContext.getBean("cartDao");
 		}

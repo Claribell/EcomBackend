@@ -15,28 +15,28 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 @Entity
-//@Component
-@Table(name= "Product")
+
+@Table(name = "Product")
 public class Product implements Serializable 
 {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="Product_Id")
+	@Column(name = "Product_Id")
 	private int id;
 	
-	@Column(name="Product Name")
+	@Column(name = "Product_Name")
 	@NotEmpty(message = "Product Name is mandatory")
 	private String productname;
 	
-	@Column(name="Description")
+	
 	private String description;
 	
-	@Column(name="Price")
+	
 	@NotNull(message="Please provide some price")
 	private double price;
 	
-	@Column(name="Stock")
+	
 	private int stock;
 	
 	/*public MultipartFile getProductImage() {
