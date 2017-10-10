@@ -6,13 +6,13 @@ import com.niit.model.User;
 
 public interface UserDao {
 	
-public void save(User u);
+public boolean save(User user);
 	
-	public void update(User u);
+	public boolean update(User user);
 	
 	public User findById(int id);
 	
-	public void delete(int id);
+	public boolean delete(User user);
 	
 	public List<User> getAllUsers();
 	

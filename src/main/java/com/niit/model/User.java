@@ -12,8 +12,8 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 @SuppressWarnings("unused")
 @Entity
-@Component
-@Table(name="User")
+//@Component
+@Table(name= "User")
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

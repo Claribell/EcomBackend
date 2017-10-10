@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 @Entity
-@Component
-@Table(name="CART")
+//@Component
+@Table(name= "CART")
 public class Cart implements Serializable {
 	
 	

@@ -12,8 +12,8 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Component
-@Table(name="Category")
+//@Component
+@Table(name= "Category")
 public class Category implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

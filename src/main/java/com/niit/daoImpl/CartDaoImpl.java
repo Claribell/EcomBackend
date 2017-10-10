@@ -17,10 +17,6 @@ public class CartDaoImpl implements CartDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	/*public CartDaoImpl(SessionFactory sessionFactory)  {
-		this.sessionFactory = sessionFactory;
-	}*/
-  
    @Transactional
    public boolean save(Cart cart) {
    	try
@@ -35,6 +31,7 @@ public class CartDaoImpl implements CartDao{
    	}
    		
    }
+   @Transactional
 public boolean update(Cart cart) {
 	try
    	{
@@ -47,6 +44,7 @@ public boolean update(Cart cart) {
    		return false;
    	}
 }
+   @Transactional
 public boolean delete(Cart cart) {
 	try
    	{
@@ -59,6 +57,7 @@ public boolean delete(Cart cart) {
    		return false;
    	}
 }
+   @Transactional
 public List<Cart> getAllCart(String user) {
 	Session session=sessionFactory.openSession();
 	Query query=session.createQuery("from Cart where user=:user and status='NP' ");
@@ -66,6 +65,7 @@ public List<Cart> getAllCart(String user) {
 	List<Cart> listCartItem=query.list();
 	return listCartItem;
 }
+   @Transactional
 public Cart findById(int id) {
 	Session session=sessionFactory.openSession();
 	Cart cart=(Cart)session.get(Cart.class,id);

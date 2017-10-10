@@ -6,63 +6,69 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.dao.ProductDao;
 import com.niit.model.Cart;
 import com.niit.model.Product;
 
-@Repository("ProductDaoImpl")
+@Repository("productDao")
 public class ProductDaoImpl implements ProductDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	/*public ProductDaoImpl(SessionFactory sessionFactory)  {
-		this.sessionFactory = sessionFactory;
-	}
-*/
+	@Transactional
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.openSession();
-		session.beginTransaction();
 		List<Product> product=session.createCriteria(Product.class).list();
-		session.getTransaction().commit();
+		session.close();
 		return product;
-		
-	}
-
+		}
+	@Transactional
 	public Product getProductById(int id) {
 		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		Product product = (Product) session.get(Product.class,id);
-		session.getTransaction().commit();
+		Product product=(Product)session.get(Product.class,id);
+		session.close();
 		return product;
 	}
-
-	public void delete(int id) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		Product product = (Product) session.get(Product.class, id);
-		session.delete(product);
-		session.getTransaction().commit();
-		session.close();	
+	@Transactional
+	public boolean delete(Product product) {
+		try
+	   	{
+	   		sessionFactory.getCurrentSession().delete(product);
+	   		return true;
+	   	}
+	   	catch(Exception e)
+	   	{
+	   		System.out.println("Exception arised:"+e);
+	   		return false;
+	   	}
 	}
-
-	public void save(Product product) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save(product);
-		session.getTransaction().commit();
-		session.close();
-		
+	@Transactional
+	public boolean save(Product product) {
+		try
+	   	{
+	   		sessionFactory.getCurrentSession().save(product);
+	   		return true;
+	   	}
+	   	catch(Exception e)
+	   	{
+	   		System.out.println("Exception arised:"+e);
+	   		return false;
+	   	}
 	}
-
-	public void update(Product product) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.update(product);
-		session.getTransaction().commit();
-		session.close();
-		
+	@Transactional
+	public boolean update(Product product) {
+		try
+	   	{
+	   		sessionFactory.getCurrentSession().saveOrUpdate(product);
+	   		return true;
+	   	}
+	   	catch(Exception e)
+	   	{
+	   		System.out.println("Exception arised:"+e);
+	   		return false;
+	   	}
 	}
-
 
 }

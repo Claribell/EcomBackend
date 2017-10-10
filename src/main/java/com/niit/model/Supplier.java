@@ -10,14 +10,17 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 @SuppressWarnings("unused")
 @Entity
-@Component
-@Table(name="Supplier")
+//@Component
+@Table(name= "Supplier")
 public class Supplier implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Column(name="Supplier_ID",nullable=false)
 	@Id
 	private int id;
+	@Column(name="Supplier Name",nullable=false)
+	private String sup_name;
+	
 	public int getId() {
 		return id;
 	}
@@ -30,8 +33,6 @@ public class Supplier implements Serializable {
 	public void setSup_name(String sup_name) {
 		this.sup_name = sup_name;
 	}
-	@Column(name="Supplier Name",nullable=false)
-	private String sup_name;
 	
 	
 

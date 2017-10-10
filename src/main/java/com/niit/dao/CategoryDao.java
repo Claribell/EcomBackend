@@ -5,9 +5,9 @@ import java.util.List;
 import com.niit.model.Category;
 
 public interface CategoryDao {
-	public void save(Category category);
-	public void update(Category category);
-	public void delete(int id);
+	public boolean save(Category category);
+	public boolean update(Category category);
+	public boolean delete(Category category);
 	public Category findById(int id);
 	public List<Category>getAllCategories();
 }

@@ -5,10 +5,10 @@ import java.util.List;
 import com.niit.model.Orders;
 
 public interface OrdersDao {
-	public void save(Orders order);
-	public void update(Orders order);
-	public void delete(int id);
+	public boolean save(Orders order);
+	public boolean update(Orders order);
+	public boolean delete(Orders order);
     public Orders findById(int id);
-    public List<Orders> listallOrders();
+    public List<Orders> listallOrders(String username);
 
 }

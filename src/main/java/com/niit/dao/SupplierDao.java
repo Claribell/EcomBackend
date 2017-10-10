@@ -6,13 +6,13 @@ import com.niit.model.Supplier;
 
 public interface SupplierDao {
 	
-	 public void save(Supplier s);
+	 public boolean save(Supplier supplier);
 		
-		public void update(Supplier s);
+		public boolean update(Supplier supplier);
 		
 		public Supplier getSupById(int id);
 		
-		public void delete(int id);
+		public boolean delete(Supplier supplier);
 		
 		public List<Supplier> getAllSuppliers();
 		

@@ -2,62 +2,79 @@ package com.niit.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.dao.OrdersDao;
 import com.niit.model.Cart;
 import com.niit.model.Orders;
 
-@Repository("ordersDaoImpl")
+@Repository("ordersDao")
 public class OrdersDaoImpl implements OrdersDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	/*public OrdersDaoImpl(SessionFactory sessionFactory)  {
-		this.sessionFactory = sessionFactory;
-	}*/
-
-	public void save(Orders order) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save(order);
-		session.getTransaction().commit();
-		session.close();
+	@Transactional
+	public boolean save(Orders order) {
+		try
+	   	{
+	   		sessionFactory.getCurrentSession().save(order);
+	   		return true;
+	   	}
+	   	catch(Exception e)
+	   	{
+	   		System.out.println("Exception arised:"+e);
+	   		return false;
+	   	}
 	}
 
-	public void update(Orders order) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.update(order);
-		session.getTransaction().commit();
-		session.close();
-		
+	@Transactional
+	public boolean update(Orders order) {
+		try
+	   	{
+	   		sessionFactory.getCurrentSession().saveOrUpdate(order);
+	   		return true;
+	   	}
+	   	catch(Exception e)
+	   	{
+	   		System.out.println("Exception arised:"+e);
+	   		return false;
+	   	}
 	}
 
-	public void delete(int id) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		Orders order = (Orders) session.get(Orders.class, id);
-		session.delete(order);
-		session.getTransaction().commit();
-		session.close();
-		
+	@Transactional
+	public boolean delete(Orders order) {
+		try
+	   	{
+	   		sessionFactory.getCurrentSession().delete(order);
+	   		return true;
+	   	}
+	   	catch(Exception e)
+	   	{
+	   		System.out.println("Exception arised:"+e);
+	   		return false;
+	   	}
 	}
 
+	@Transactional
 	public Orders findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.openSession();
+		Orders order=(Orders)session.get(Orders.class, id);
+		session.close();
+		return order;
 	}
 
-	public List<Orders> listallOrders() {
+	@Transactional
+	public List<Orders> listallOrders(String username) {
 		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		List<Orders> order=session.createCriteria(Orders.class).list();
-		session.getTransaction().commit();
-		return order;
+		Query query=session.createQuery("from Orders where username=:username");
+		query.setParameter("username", username);
+		List<Orders> listOrderItem=query.list();
+		return listOrderItem;
 	}
 
 	

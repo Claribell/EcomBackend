@@ -31,7 +31,7 @@ import com.niit.model.*;
 @EnableTransactionManagement
 public class hibernateConfig {
 	
-	/*public static Logger logger = Logger.getLogger("hibernateConfig");*/
+	public static Logger logger = Logger.getLogger("hibernateConfig");
 	
 	@Autowired
 	@Bean(name="dataSource")
@@ -81,8 +81,6 @@ public class hibernateConfig {
 	return sessionBuilder.buildSessionFactory();
 	}
 	
-	
-	
 	@Autowired
 	@Bean(name="userDaoImpl")
 	public UserDaoImpl getUserDao(SessionFactory sessionFactory)
@@ -126,7 +124,6 @@ public class hibernateConfig {
 	}
 	
 	   
-	
 	@Autowired
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {

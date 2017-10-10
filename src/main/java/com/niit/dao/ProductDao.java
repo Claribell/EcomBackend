@@ -8,15 +8,15 @@ public interface ProductDao {
 	
 	
 	
-		List<Product> getAllProducts();
+		public List<Product> getAllProducts();
 
-		Product getProductById(int id);
+		 public Product getProductById(int id);
 
-		void delete (int id);
+		public boolean delete (Product product);
 
-		void save (Product product);
+		public boolean save (Product product);
 		
-		void update(Product product);
+		public boolean update(Product product);
 
 	}
 

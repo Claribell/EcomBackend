@@ -15,8 +15,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 @Entity
-@Component
-@Table(name="product")
+//@Component
+@Table(name= "Product")
 public class Product implements Serializable 
 {
 	private static final long serialVersionUID = 1L;
