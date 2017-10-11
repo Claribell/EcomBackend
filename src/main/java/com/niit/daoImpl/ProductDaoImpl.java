@@ -32,19 +32,22 @@ public class ProductDaoImpl implements ProductDao {
 		session.close();
 		return product;
 	}
+	@Transactional
 	public void delete(int id) {
 		Session session = sessionFactory.openSession();	
 		Product product=(Product)session.get(Product.class,id);
 		session.delete(product);
 		session.close();
 		}
-	public void save(Product product) {
+	@Transactional
+	public void addProduct(Product product) {
 		Session session = sessionFactory.openSession();	
 		session.save(product);
 		session.flush();
 		session.close();
 		
 	}
+	@Transactional
 	public void update(Product product) {
 		Session session = sessionFactory.openSession();	
 		session.update(product);

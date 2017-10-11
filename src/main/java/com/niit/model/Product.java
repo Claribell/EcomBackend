@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -15,7 +17,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 @Entity
-
 @Table(name = "Product")
 public class Product implements Serializable 
 {
@@ -38,6 +39,14 @@ public class Product implements Serializable
 	
 	
 	private int stock;
+	
+	/*@ManyToOne
+	@JoinColumn(name="id")
+	private Supplier supplier;
+	
+	@ManyToOne
+	@JoinColumn(name="id")
+	private Category category;*/
 	
 	/*public MultipartFile getProductImage() {
 		return productImage;
@@ -79,5 +88,6 @@ public class Product implements Serializable
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+	
 
 }
