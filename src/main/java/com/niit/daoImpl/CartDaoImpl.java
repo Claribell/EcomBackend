@@ -18,7 +18,7 @@ public class CartDaoImpl implements CartDao{
 	private SessionFactory sessionFactory;
 	
    @Transactional
-   public boolean save(Cart cart) {
+   public boolean addToCart(Cart cart) {
    	try
    	{
    		sessionFactory.getCurrentSession().save(cart);
@@ -45,7 +45,7 @@ public boolean update(Cart cart) {
    	}
 }
    @Transactional
-public boolean delete(Cart cart) {
+public boolean deleteCartItem(Cart cart) {
 	try
    	{
    		sessionFactory.getCurrentSession().delete(cart);

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.niit.test.CartDaoTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.045 sec <<< FAILURE!
-saveTest(com.niit.test.CartDaoTest)  Time elapsed: 0.27 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.266 sec <<< FAILURE!
+saveTest(com.niit.test.CartDaoTest)  Time elapsed: 0.154 sec  <<< ERROR!
 org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["PRIMARY KEY ON PUBLIC.CART(CART_ID)"; SQL statement:
 insert into CART (price, Product_Name, quantity, status, User_Name, Cart_ID) values (?, ?, ?, ?, ?, ?) [23505-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
 	at org.springframework.orm.hibernate4.SessionFactoryUtils.convertHibernateAccessException(SessionFactoryUtils.java:163)
@@ -15,7 +15,7 @@ insert into CART (price, Product_Name, quantity, status, User_Name, Cart_ID) val
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
-	at com.sun.proxy.$Proxy29.save(Unknown Source)
+	at com.sun.proxy.$Proxy30.addToCart(Unknown Source)
 	at com.niit.test.CartDaoTest.saveTest(CartDaoTest.java:35)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

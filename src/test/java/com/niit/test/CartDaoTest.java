@@ -32,7 +32,7 @@ public class CartDaoTest {
 			cart.setStatus("Np");
 			cart.setUser("sanjeev");
 			cart.setProductName("Bags");
-			assertTrue("problem in creating cartItem",cartDao.save(cart));
+			assertTrue("problem in creating cartItem",cartDao.addToCart(cart));
 		}
 			
 	}

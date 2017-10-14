@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Table(name = "Product")
 public class Product implements Serializable 
@@ -40,22 +41,21 @@ public class Product implements Serializable
 	
 	private int stock;
 	
-	/*@ManyToOne
-	@JoinColumn(name="id")
-	private Supplier supplier;
+	private String manufacturer;
 	
-	@ManyToOne
-	@JoinColumn(name="id")
-	private Category category;*/
+	@Transient
+	@Column(name="Image")
+	private MultipartFile productImage;
 	
-	/*public MultipartFile getProductImage() {
+	
+	
+	public MultipartFile getProductImage() {
 		return productImage;
 	}
 	public void setProductImage(MultipartFile productImage) {
 		this.productImage = productImage;
 	}
-	@Transient
-	private MultipartFile productImage;*/
+	
 	
 	
 	public int getId() {
