@@ -58,7 +58,7 @@ public boolean deleteCartItem(Cart cart) {
    	}
 }
    @Transactional
-public List<Cart> getAllCart(String user) {
+public List<Cart> getCartItems(String user) {
 	Session session=sessionFactory.openSession();
 	Query query=session.createQuery("from Cart where user=:user and status='NP' ");
 	query.setParameter("user", user);
