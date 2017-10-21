@@ -1,6 +1,7 @@
 package com.niit.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ public class Product implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)                                
 	@Column(name = "Product_Id")
 	private int id;
 	
@@ -40,7 +41,13 @@ public class Product implements Serializable
 	
 	
 	private int stock;
-	
+	private String code;
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
 	private String manufacturer;
 	
 	@Transient
@@ -88,6 +95,17 @@ public class Product implements Serializable
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+	/*@Override
+	public String toString() {
+		return "Product [id=" + id + ", productname=" + productname + ", description=" + description + ", price="
+				+ price + ", stock=" + stock + ", code=" + code + ", manufacturer=" + manufacturer + ", productImage="
+				+ productImage + "]";
+	}
 	
-
+  public Product() {
+		
+		this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
+		
+	}*/
+	
 }

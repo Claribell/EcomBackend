@@ -33,7 +33,7 @@ public class hibernateConfig {
 	
 	public static Logger logger = Logger.getLogger("hibernateConfig");
 	
-	@Autowired
+	/*@Autowired
 	@Bean(name="dataSource")
 	public DataSource getDataSource()
 	{
@@ -42,9 +42,9 @@ public class hibernateConfig {
 		dataSource.setUrl("jdbc:h2:tcp://localhost/~/test");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
-        return dataSource;
+        return dataSource;*/
 		
-	}
+	//}
 	
 	private Properties getHibernateProperties() {
 		Properties properties = new Properties();
