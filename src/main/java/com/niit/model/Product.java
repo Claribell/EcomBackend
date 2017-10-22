@@ -52,18 +52,14 @@ public class Product implements Serializable
 	
 	@Transient
 	@Column(name="Image")
-	private MultipartFile productImage;
+	private MultipartFile image;
 	
-	
-	
-	public MultipartFile getProductImage() {
-		return productImage;
+	public MultipartFile getImage() {
+		return image;
 	}
-	public void setProductImage(MultipartFile productImage) {
-		this.productImage = productImage;
+	public void setImage(MultipartFile image) {
+		this.image = image;
 	}
-	
-	
 	
 	public int getId() {
 		return id;
@@ -95,17 +91,23 @@ public class Product implements Serializable
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	/*@Override
+	public String getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+	@Override
 	public String toString() {
 		return "Product [id=" + id + ", productname=" + productname + ", description=" + description + ", price="
-				+ price + ", stock=" + stock + ", code=" + code + ", manufacturer=" + manufacturer + ", productImage="
-				+ productImage + "]";
+				+ price + ", stock=" + stock + ", code=" + code + ", manufacturer=" + manufacturer + "]";
 	}
 	
   public Product() {
 		
 		this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
 		
-	}*/
+	}
+
 	
 }

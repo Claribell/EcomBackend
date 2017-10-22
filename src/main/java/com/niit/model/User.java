@@ -30,7 +30,15 @@ public class User implements Serializable {
 	private String Password;
 	@Column(name = "Address", nullable = false)
 	private String address;
+	private String role;
 	
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public int getId() {
 		return id;
 	}
@@ -66,6 +74,11 @@ public class User implements Serializable {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", mobno=" + mobno + ", email=" + email + ", Password=" + Password
+				+ ", address=" + address + ", role=" + role + "]";
 	}
 	
 

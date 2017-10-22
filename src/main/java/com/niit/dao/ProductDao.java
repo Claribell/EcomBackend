@@ -12,11 +12,11 @@ public interface ProductDao {
 
 		 public Product getProductById(int id);
 
-		public void delete (int id);
+		public boolean delete (Product product);
 
-		public void addProduct (Product product);
+		public boolean addProduct (Product product);
 		
-		public void update(Product product);
+		public boolean update(Product product);
 
 	}
 
