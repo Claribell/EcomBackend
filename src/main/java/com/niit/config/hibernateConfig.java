@@ -24,28 +24,26 @@ import com.niit.daoImpl.SupplierDaoImpl;
 import com.niit.daoImpl.UserDaoImpl;
 import com.niit.model.*;
 
-
 @SuppressWarnings("unused")
 @Configuration
 @ComponentScan("com.niit.EcomBackend")
 @EnableTransactionManagement
 public class hibernateConfig {
-	
+
 	public static Logger logger = Logger.getLogger("hibernateConfig");
 	
 	@Autowired
-	@Bean(name="dataSource")
-	public DataSource getDataSource()
-	{
+	@Bean(name = "dataSource")
+	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
 		dataSource.setUrl("jdbc:h2:tcp://localhost/~/test");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
-        return dataSource;
-		
+		return dataSource;
+
 	}
-	
+
 	private Properties getHibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.show_sql", "true");
@@ -53,77 +51,58 @@ public class hibernateConfig {
 		properties.put("hibernate.hbm2ddl.auto", "update");
 		return properties;
 	}
-	
-	/*@Autowired
-	@Bean(name = "sessionFactory")
-	//public LocalSessionFactoryBean  getSessionFactory(DataSource dataSource)
-	public SessionFactory getSessionFactory(DataSource dataSource)
-	{
-		    LocalSessionFactoryBean sessionBuilder = new LocalSessionFactoryBean();
-			sessionBuilder.setDataSource(getDataSource());
-			sessionBuilder.setHibernateProperties(getHibernateProperties());
-			sessionBuilder.setPackagesToScan(new String[] {"com.niit.model"});
-			return sessionBuilder;
-		
-	}*/
-	
+
 	@Autowired
 	@Bean(name = "sessionFactory")
 	public SessionFactory getSessionFactory(DataSource dataSource) {
-	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-	sessionBuilder.addProperties(getHibernateProperties());
-	sessionBuilder.addAnnotatedClass(User.class);
-	sessionBuilder.addAnnotatedClass(Category.class);
-	sessionBuilder.addAnnotatedClass(Product.class);
-	sessionBuilder.addAnnotatedClass(Supplier.class);
-	sessionBuilder.addAnnotatedClass(Orders.class);
-	sessionBuilder.addAnnotatedClass(Cart.class);
-	return sessionBuilder.buildSessionFactory();
+		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
+		sessionBuilder.addProperties(getHibernateProperties());
+		sessionBuilder.addAnnotatedClass(User.class);
+		sessionBuilder.addAnnotatedClass(Category.class);
+		sessionBuilder.addAnnotatedClass(Product.class);
+		sessionBuilder.addAnnotatedClass(Supplier.class);
+		sessionBuilder.addAnnotatedClass(Orders.class);
+		sessionBuilder.addAnnotatedClass(Cart.class);
+		return sessionBuilder.buildSessionFactory();
 	}
-	
+
 	@Autowired
-	@Bean(name="userDaoImpl")
-	public UserDaoImpl getUserDao(SessionFactory sessionFactory)
-	{
-	return new UserDaoImpl();
+	@Bean(name = "userDaoImpl")
+	public UserDaoImpl getUserDao(SessionFactory sessionFactory) {
+		return new UserDaoImpl();
 	}
-	
+
 	@Autowired
-	@Bean(name="cartDaoImpl")
-	public CartDaoImpl getCartDao(SessionFactory sessionFactory)
-	{
-	return new CartDaoImpl ();
+	@Bean(name = "cartDaoImpl")
+	public CartDaoImpl getCartDao(SessionFactory sessionFactory) {
+		return new CartDaoImpl();
 	}
-	
+
 	@Autowired
-	@Bean(name="categoryDaoImpl")
-	public CategoryDaoImpl getCategoryDao(SessionFactory sessionFactory)
-	{
-	return new CategoryDaoImpl();
+	@Bean(name = "categoryDaoImpl")
+	public CategoryDaoImpl getCategoryDao(SessionFactory sessionFactory) {
+		return new CategoryDaoImpl();
 	}
-	
+
 	@Autowired
-	@Bean(name="ordersDaoImpl")
-	public OrdersDaoImpl getOrdersDao(SessionFactory sessionFactory)
-	{
-	return new OrdersDaoImpl();
+	@Bean(name = "ordersDaoImpl")
+	public OrdersDaoImpl getOrdersDao(SessionFactory sessionFactory) {
+		return new OrdersDaoImpl();
 	}
-	
+
 	@Autowired
-	@Bean(name="productDaoImpl")
-	public ProductDaoImpl getProductDao(SessionFactory sessionFactory)
-	{
-	return new ProductDaoImpl();
+	@Bean(name = "productDaoImpl")
+	public ProductDaoImpl getProductDao(SessionFactory sessionFactory) {
+		return new ProductDaoImpl();
 	}
-	
+
 	@Autowired
-	@Bean(name="supplierDaoImpl")
-	public SupplierDaoImpl getSupplierDao(SessionFactory sessionFactory)
-	{
-	return new SupplierDaoImpl();
+	@Bean(name = "supplierDaoImpl")
+	public SupplierDaoImpl getSupplierDao(SessionFactory sessionFactory) {
+		return new SupplierDaoImpl();
 	}
-	
-	   
+
+	// TransactionManager Bean
 	@Autowired
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {

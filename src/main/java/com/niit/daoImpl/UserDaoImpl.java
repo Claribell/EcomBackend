@@ -17,11 +17,11 @@ import com.niit.model.User;
 public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Transactional
 	public User findById(int id) {
-		Session session=sessionFactory.openSession();
-		User user=(User)session.get(User.class,id);
+		Session session = sessionFactory.openSession();
+		User user = (User) session.get(User.class, id);
 		session.close();
 		return user;
 	}
@@ -29,55 +29,44 @@ public class UserDaoImpl implements UserDao {
 	@Transactional
 	public List<User> getAllUsers() {
 		Session session = sessionFactory.openSession();
-		List<User>user=session.createCriteria(User.class).list();
+		List<User> user = session.createCriteria(User.class).list();
 		session.close();
 		return user;
-		
+
 	}
 
 	@Transactional
 	public boolean save(User user) {
-		try
-	   	{
-	   		sessionFactory.getCurrentSession().save(user);
-	   		return true;
-	   	}
-	   	catch(Exception e)
-	   	{
-	   		System.out.println("Exception arised:"+e);
-	   		return false;
-	   	}
-	   		
+		try {
+			sessionFactory.getCurrentSession().save(user);
+			return true;
+		} catch (Exception e) {
+			System.out.println("Exception arised:" + e);
+			return false;
+		}
+
 	}
 
 	@Transactional
 	public boolean update(User user) {
-		try
-	   	{
-	   		sessionFactory.getCurrentSession().saveOrUpdate(user);
-	   		return true;
-	   	}
-	   	catch(Exception e)
-	   	{
-	   		System.out.println("Exception arised:"+e);
-	   		return false;
-	   	}
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(user);
+			return true;
+		} catch (Exception e) {
+			System.out.println("Exception arised:" + e);
+			return false;
+		}
 	}
 
 	@Transactional
 	public boolean delete(User user) {
-		try
-	   	{
-	   		sessionFactory.getCurrentSession().delete(user);
-	   		return true;
-	   	}
-	   	catch(Exception e)
-	   	{
-	   		System.out.println("Exception arised:"+e);
-	   		return false;
-	   	}
+		try {
+			sessionFactory.getCurrentSession().delete(user);
+			return true;
+		} catch (Exception e) {
+			System.out.println("Exception arised:" + e);
+			return false;
+		}
 	}
-
-	
 
 }
